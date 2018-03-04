@@ -25,8 +25,8 @@ defmodule Hello.Router do
   scope "/books", Hello do
     pipe_through :browser
 
-    get "/", BookController, :index
-    get "/new", BookController, :new
+    resources "/", BookController
+
   end
 
   # Other scopes may use custom stacks.
