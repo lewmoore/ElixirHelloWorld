@@ -19,8 +19,14 @@ defmodule Hello.Router do
     get "/", PageController, :index
     get "/hello", HelloController, :index
     get "/hello/:messenger", HelloController, :show
-    resources "/books", BookController
-    get "/books", BookController, :show
+
+  end
+
+  scope "/books", Hello do
+    pipe_through :browser
+
+    get "/", BookController, :index
+    get "/new", BookController, :new
   end
 
   # Other scopes may use custom stacks.
